@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class StatisticsPage extends StatefulWidget {
   final Map<String, double> itemQuantities;
   final int maxItems;
-  final List<Map<String, dynamic>> items; // Tambahkan items yang lengkap
+  final List<Map<String, dynamic>> items;
 
   const StatisticsPage({
     Key? key,
     required this.itemQuantities,
     required this.maxItems,
-    required this.items, // Kirimkan items ke sini
+    required this.items,
   }) : super(key: key);
 
   @override
@@ -22,20 +22,18 @@ class _StatisticsPageState extends State<StatisticsPage>
   late Animation<double> _animation;
   double _currentProgress = 0.0;
 
-  // Menghitung total item berdasarkan quantity yang ada
   int get totalItems =>
       widget.itemQuantities.values
           .fold(0.0, (sum, qty) => sum + qty)
-          .toInt(); // Menggunakan double sebagai penampung nilai qty
+          .toInt();
 
-  // Menghitung total poin yang terkumpul berdasarkan berat dan poin per kg
   double calculateTotalPoints() {
     double totalPoints = 0;
     widget.itemQuantities.forEach((key, value) {
       var item = widget.items.firstWhere((item) => item['name'] == key);
       totalPoints +=
           (item['pointsPerKg'] as double) *
-          value; // Menggunakan double untuk menghindari truncation
+          value;
     });
     return totalPoints;
   }
