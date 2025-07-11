@@ -99,7 +99,7 @@ class _KurangiSampahPageState extends State<KurangiSampahPage> {
     bool success = await prefs.setInt('totalPoints', newTotal);
 
     if (success) {
-      Navigator.pop(context, _rewardPoints); // ✅ Kembalikan poin ke HomePage
+      Navigator.pop(context, _rewardPoints);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Gagal menyimpan total poin.")),
